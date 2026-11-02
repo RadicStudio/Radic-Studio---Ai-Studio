@@ -1,0 +1,7 @@
+{
+  "name": "Radic Studio",
+  "description": "Graphic design portfolio, brand identity showcase, quote builder, and client management system for Radic Studio.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

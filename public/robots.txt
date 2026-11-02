@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /q/
+
+Sitemap: https://radicstudio.lovable.app/sitemap.xml

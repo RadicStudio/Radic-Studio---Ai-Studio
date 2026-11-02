@@ -1,0 +1,377 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Radic Studio design system.
+ * Brand tokens live under --radic-* and are mapped into Tailwind utilities
+ * (bg-radic-red, text-ink, bg-paper ...). The shadcn semantic tokens below
+ * are pointed at the same palette so the UI kit matches the brand.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "Geist", ui-sans-serif, system-ui, sans-serif;
+
+  --color-radic-red: var(--radic-red);
+  --color-radic-red-dark: var(--radic-red-dark);
+  --color-radic-red-tint: var(--radic-red-tint);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-mist: var(--mist);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-signal: var(--signal);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-once: pulse-once 1.4s ease-out 1;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes pulse-once {
+    0% {
+      box-shadow: 0 0 0 0 oklch(0.14 0 0 / 0.45);
+    }
+    100% {
+      box-shadow: 0 0 0 18px oklch(0.14 0 0 / 0);
+    }
+  }
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand */
+  --radic-red: oklch(0.47 0.18 20);
+  --radic-red-dark: oklch(0.38 0.15 20);
+  --radic-red-tint: oklch(0.94 0.025 10);
+  --ink: oklch(0.18 0 0);
+  --graphite: oklch(0.42 0 0);
+  --mist: oklch(0.92 0 0);
+  --paper: oklch(0.985 0.003 95);
+  --surface: oklch(1 0 0);
+  --line: oklch(0.92 0 0);
+  --signal: var(--radic-red);
+
+  /* Semantic (shadcn) mapped to brand */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--ink);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--ink);
+  --primary: var(--radic-red);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0 0);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.955 0.002 95);
+  --muted-foreground: var(--graphite);
+  --accent: var(--radic-red-tint);
+  --accent-foreground: var(--radic-red-dark);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: var(--mist);
+  --input: var(--mist);
+  --ring: var(--radic-red);
+  --chart-1: var(--radic-red);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--radic-red);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: var(--radic-red-tint);
+  --sidebar-accent-foreground: var(--radic-red-dark);
+  --sidebar-border: var(--mist);
+  --sidebar-ring: var(--radic-red);
+}
+
+/*
+ * Public site: white base, near-black type, soft grey panels, crimson kept for the brand.
+ * Scoped to .site so the admin panel keeps its own palette.
+ */
+.site {
+  --radius: 1rem;
+
+  --paper: oklch(1 0 0);
+  --surface: oklch(0.965 0.002 90);
+  --ink: oklch(0.14 0 0);
+  --graphite: oklch(0.52 0 0);
+  --mist: oklch(0.91 0 0);
+  --line: oklch(0.91 0 0);
+  --radic-red-tint: oklch(0.95 0 0);
+  --signal: var(--ink);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --border: var(--line);
+  --input: var(--line);
+
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+.dark {
+  --background: oklch(0.15 0 0);
+  --foreground: oklch(0.97 0 0);
+  --card: oklch(0.2 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.2 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: var(--radic-red);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.26 0 0);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.26 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.3 0.04 20);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--radic-red);
+  --chart-1: var(--radic-red);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.2 0 0);
+  --sidebar-foreground: oklch(0.97 0 0);
+  --sidebar-primary: var(--radic-red);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.26 0 0);
+  --sidebar-accent-foreground: oklch(0.97 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: var(--radic-red);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  /* Headline voice: a tight grotesk, set close. */
+  .display-wide {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1;
+  }
+
+  /* The one quaint note: a serif italic for a single word inside a headline. */
+  .serif-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--radic-red);
+    color: white;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-[1280px] px-4 md:px-6;
+  }
+
+  .section {
+    @apply py-[72px] md:py-[120px];
+  }
+
+  /* Text link with an underline that draws in from the left */
+  .link-draw {
+    @apply relative inline-block;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-draw:hover,
+  .link-draw[data-active="true"] {
+    background-size: 100% 1px;
+  }
+
+  .masonry {
+    column-gap: 1.5rem;
+    column-count: 1;
+  }
+  @media (min-width: 640px) {
+    .masonry {
+      column-count: 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .masonry {
+      column-count: 3;
+    }
+  }
+  .masonry > * {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose-radic {
+    @apply text-[17px] leading-relaxed text-graphite;
+  }
+  .prose-radic h2 {
+    @apply mt-10 mb-3 text-2xl font-semibold text-ink;
+  }
+  .prose-radic h3 {
+    @apply mt-8 mb-2 text-xl font-semibold text-ink;
+  }
+  .prose-radic p {
+    @apply mb-5;
+  }
+  .prose-radic ul,
+  .prose-radic ol {
+    @apply mb-5 ml-5 list-disc space-y-1;
+  }
+  .prose-radic ol {
+    @apply list-decimal;
+  }
+  .prose-radic a {
+    @apply text-radic-red underline underline-offset-4;
+  }
+  .prose-radic strong {
+    @apply font-semibold text-ink;
+  }
+  .prose-radic blockquote {
+    @apply my-6 border-l-2 border-radic-red pl-5 text-ink italic;
+  }
+  .prose-radic img {
+    @apply my-6 rounded-xl;
+  }
+
+  .paused:hover > * {
+    animation-play-state: paused;
+  }
+
+  /* Gallery wall: uniform frames so flyers, logos and banners sit together calmly. */
+  .wall {
+    @apply grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  /* Soft grey panel: no border, no shadow. */
+  .panel {
+    @apply rounded-3xl bg-surface;
+  }
+
+  /* Rows separated by hairlines (services, meta lists). */
+  .rows > * + * {
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* Quotes and certificates print as clean documents. */
+@media print {
+  .no-print,
+  [data-sonner-toaster] {
+    display: none !important;
+  }
+  html,
+  body,
+  .site {
+    background: #fff !important;
+  }
+  .quote-sheet {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: none !important;
+    padding: 0 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .quote-sheet.certificate {
+    break-before: page;
+    padding: 40px !important;
+  }
+}
